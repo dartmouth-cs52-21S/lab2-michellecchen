@@ -1,0 +1,333 @@
+* {
+  font-family: 'MedievalSharp', cursive;
+}
+
+.image-with-caption {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  padding: 50px 0 90px;
+  height: 200px;
+  background-image: url("https://media.dndbeyond.com/compendium-images/moot/ds6d2NLXmv1wnY8q/00-02.b.png");
+  margin: 15px 0 15px;
+  background-position: center;
+  background-size: cover;
+}
+
+.header h2 {
+  line-height: 20px;
+  font-size: 40px;
+  text-shadow: white 0px 0px 20px;
+}
+
+.question-header h2 {
+  text-shadow: white 0px 0px 20px;
+}
+
+.header h1 {
+  text-shadow: white 0px 0px 30px;
+  font-size: 60px;
+  color: rgba(0,0,0,0.5);
+  font-style: italic;
+  
+  background: gradient(linear, left top, right top, from(#000), to(#000), color-stop(0.5, #E6BE8A));
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(#000), color-stop(0.5, #E6BE8A));
+  
+  animation-name: shimmer;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  background-size: 125px 100%;
+  background-clip: text;
+  
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 3.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-background-size: 125px 100%;
+  -webkit-background-clip: text;
+  
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #000;
+}
+
+/* "Shimmers" from left to right of text. */
+@keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+.question-header {
+  text-align: center;
+  padding: 50px;
+  height: 120px;
+  background-image: url("https://media.dndbeyond.com/compendium-images/moot/ds6d2NLXmv1wnY8q/02-02.png");
+  margin-bottom: 15px;
+  background-position: center;
+  background-size: cover;
+}
+
+#modal_text {
+  display: flex;
+  flex-direction: row;
+}
+
+#modal_text h1 {
+  font-size: 50px;
+  line-height: 0px;
+}
+
+#modal_img img {
+  height: 150px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+/*   background-color: rgba(0,0,0,0.4); */
+}
+
+.modal_popup {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_popup h2 {
+  line-height: 0px;
+}
+
+.modal_popup img {
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.close_modal {
+  color: #aaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close_modal:hover {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.button {
+  font-size: 20px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 10px auto;
+  border: none;
+  background-color: #F8E4C7;
+  border-radius: 8px;
+  transition: all .3s ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #EFCD9A;
+}
+
+label img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  transition: all .3s ease-in-out;
+  padding: 10px;
+  border-radius: 12%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  background-color: #F7F4F4;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+p {
+    font-size: 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ****** */
+
+#quiz {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.quiz-question {
+  text-align: center;
+  margin: 0 0 20px;
+  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #999999;
+  width: 800px;
+}
+
+.quiz-option {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+label {
+  display: flex;
+}
+
+label img:hover {
+  transform:scale(1.1);
+  -webkit-transform:scale(1.1);
+  cursor: pointer;
+}
+
+.boxcolor {
+  margin: 10px;
+  line-height: 80px;
+  position: relative;
+  display: inline-block;
+  background-color: #C4DCE1;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.boxcolor h3 {
+  padding: 10px;
+  font-size: 25px;
+}
+
+/* Used https://tobiasahlin.com/blog/how-to-animate-box-shadow/ as a reference */
+
+.boxcolor::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.boxcolor:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  cursor: pointer;
+}
+
+.boxcolor:hover::after {
+  opacity: 1;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.boxcolor:hover h3 {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+/* RADIO BUTTONS */
+
+input[type=radio] {
+  display: none;
+}
+
+.quiz-option input[type=radio]:not(:checked) + label img {
+  opacity: 0.5;
+}
+
+.quiz-option input[type=radio]:checked + label img {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.quiz-option input[type=radio]:checked + label p {
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.quiz-option input[type=radio]:checked + label .boxcolor {
+  background-color: #90B5C5;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
