@@ -1,12 +1,42 @@
+/* ------- */
+/* GENERAL STYLING */
+/* ------- */
+
 * {
   font-family: 'MedievalSharp', cursive;
 }
 
-.image-with-caption {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+body {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  background-color: #F7F4F4;
 }
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+p {
+  font-size: 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ------- */
+/* HEADER STYLING:
+  BIG HEADER @ TOP (WITH SHIMMERING TEXT),
+  SUBHEADERS PER QUESTION */
+/* ------- */
 
 .header {
   text-align: center;
@@ -18,15 +48,10 @@
   background-size: cover;
 }
 
-.header h2 {
-  line-height: 20px;
-  font-size: 40px;
-  text-shadow: white 0px 0px 20px;
-}
-
-.question-header h2 {
-  text-shadow: white 0px 0px 20px;
-}
+/* Large 'h1' part of header text shimmers. */
+/* Implemented this on a whim before realizing that it could contribute to the extra
+CSS flair component that I ended up choosing... oh well. /*
+/* Referenced: https://codepen.io/redouglas/pen/gobsm */
 
 .header h1 {
   text-shadow: white 0px 0px 30px;
@@ -56,21 +81,19 @@
 
 /* "Shimmers" from left to right of text. */
 @keyframes shimmer {
-  0% {
-    background-position: top left;
-  }
-  100% {
-    background-position: top right;
-  }
+  0% { background-position: top left; }
+  100% { background-position: top right; }
 }
 
 @-webkit-keyframes shimmer {
-  0% {
-    background-position: top left;
-  }
-  100% {
-    background-position: top right;
-  }
+  0% { background-position: top left; }
+  100% { background-position: top right; }
+}
+
+.header h2 {
+  line-height: 20px;
+  font-size: 40px;
+  text-shadow: white 0px 0px 20px;
 }
 
 .question-header {
@@ -83,21 +106,163 @@
   background-size: cover;
 }
 
-#modal_text {
+/* Text shadow: Increases readability of text on background */
+.question-header h2 {
+  text-shadow: white 0px 0px 20px;
+}
+
+/* ------- */
+/* GENERAL QUIZ STYLING (flexboxes for everything) */
+/* ------- */
+
+#quiz {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.quiz-question {
+  text-align: center;
+  margin: 0 0 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #999999;
+  width: 800px;
+}
+
+.quiz-option {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
-#modal_text h1 {
-  font-size: 50px;
-  line-height: 0px;
+/* ------- */
+/* STYLING OPTIONS PT. 1: CAPTIONED IMAGES */
+/* ------- */
+
+.image-with-caption {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-#modal_img img {
-  height: 150px;
+label {
+  display: flex;
 }
 
-/* Modal */
+label img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  transition: all .3s ease-in-out;
+  padding: 10px;
+  border-radius: 12%;
+}
+
+label img:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* ------- */
+/* STYLING OPTIONS PT. 2: TEXT WITHIN COLORED BOX */
+/* ------- */
+
+.boxcolor {
+  background-color: #C4DCE1;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  line-height: 80px;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* "Biggify" effect upon hover */
+.boxcolor:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Intensify shadow upon selection */
+.boxcolor::after {
+  content: ""; /* Necessary for all ::before and ::after */
+  position: absolute;
+  z-index: -1; /* impt */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.boxcolor:hover::after {
+  opacity: 1;
+}
+
+/* Text inside colorful box */
+.boxcolor h3 {
+  padding: 10px;
+  font-size: 25px;
+}
+
+.boxcolor:hover h3 {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensures that the text is evenly spaced in the box */
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* ------- */
+/* STYLING RESULTS BUTTON AT BOTTOM */
+/* ------- */
+
+.button {
+  font-size: 20px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 10px auto;
+  border: none;
+  background-color: #F8E4C7;
+  border-radius: 8px;
+  transition: all .3s ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #EFCD9A;
+}
+
+/* ------- */
+/* MODAL POPUP STYLING
+  Referenced: https://www.w3schools.com/howto/howto_css_modals.asp */
+/* ------- */
+
 .modal {
   display: none;
   position: fixed;
@@ -108,7 +273,6 @@
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-/*   background-color: rgba(0,0,0,0.4); */
 }
 
 .modal_popup {
@@ -134,9 +298,25 @@
   border-radius: 4px;
 }
 
+#modal_text {
+  display: flex;
+  flex-direction: row;
+}
+
+/* God name */
+#modal_text h1 {
+  font-size: 50px;
+  line-height: 0px;
+}
+
+/* God portrait */
+#modal_img img {
+  height: 150px;
+}
+
 .close_modal {
   color: #aaa;
-  float: right;
+  float: right; /* CHECK THIS */
   font-size: 20px;
   font-weight: bold;
 }
@@ -147,175 +327,29 @@
   text-decoration: none;
 }
 
-.button {
-  font-size: 20px;
-  display: block;
-  width: 200px;
-  height: 50px;
-  margin: 10px auto;
-  border: none;
-  background-color: #F8E4C7;
-  border-radius: 8px;
-  transition: all .3s ease-in-out;
-}
-
-.button:hover {
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-  background-color: #EFCD9A;
-}
-
-label img {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  transition: all .3s ease-in-out;
-  padding: 10px;
-  border-radius: 12%;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    align-items: center;
-  background-color: #F7F4F4;
-}
-
-h1 {
-    font-size: 50px;
-}
-
-h2 {
-  font-size: 30px;
-}
-
-h3 {
-  font-size: 18px;
-  transition: all 0.3s ease-in-out;
-}
-
-p {
-    font-size: 15px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-/* ****** */
-
-#quiz {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.quiz-question {
-  text-align: center;
-  margin: 0 0 20px;
-  padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px #999999;
-  width: 800px;
-}
-
-.quiz-option {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-}
-
-label {
-  display: flex;
-}
-
-label img:hover {
-  transform:scale(1.1);
-  -webkit-transform:scale(1.1);
-  cursor: pointer;
-}
-
-.boxcolor {
-  margin: 10px;
-  line-height: 80px;
-  position: relative;
-  display: inline-block;
-  background-color: #C4DCE1;
-  border-radius: 10px;
-  padding: 10px;
-  width: 200px;
-  height: 200px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.boxcolor h3 {
-  padding: 10px;
-  font-size: 25px;
-}
-
-/* Used https://tobiasahlin.com/blog/how-to-animate-box-shadow/ as a reference */
-
-.boxcolor::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.boxcolor:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  cursor: pointer;
-}
-
-.boxcolor:hover::after {
-  opacity: 1;
-}
-
-span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-}
-
-.boxcolor:hover h3 {
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-/* RADIO BUTTONS */
+/* ------- */
+/* STYLING RADIO BUTTONS */
+/* ------- */
 
 input[type=radio] {
   display: none;
 }
 
+/* Reduce opacity of unchecked options */
 .quiz-option input[type=radio]:not(:checked) + label img {
   opacity: 0.5;
 }
 
+/* Add shadow & make image larger when selected */
 .quiz-option input[type=radio]:checked + label img {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transform: scale(1.05);
   -webkit-transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
 }
 
+/* Bold text underneath selected image & increase letter spacing */
 .quiz-option input[type=radio]:checked + label p {
   font-weight: bold;
   letter-spacing: 1.5px;
@@ -323,11 +357,12 @@ input[type=radio] {
   -webkit-transition: all 0.3s ease-in-out;
 }
 
+/* Darken background when selected, add box shadow, make box slightly larger */
 .quiz-option input[type=radio]:checked + label .boxcolor {
   background-color: #90B5C5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transform: scale(1.05);
   -webkit-transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
 }
