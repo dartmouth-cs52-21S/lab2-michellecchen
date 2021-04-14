@@ -103,3 +103,14 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// LISTENER FOR RADIO BUTTONS
+// Upon clicking any radio button, this function assigns 'unselected' class to all unchecked buttons.
+// (All buttons default to 'unselected'; this class is removed from the chosen button only, manually).
+$(".radio-option").change(function() {
+  $(`input[type=radio][name='${this.name}']`).addClass("unselected");
+
+  if ($(this).is(':checked')) {
+    $(this).removeClass("unselected");
+  }
+});

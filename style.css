@@ -336,8 +336,16 @@ input[type=radio] {
 }
 
 /* Reduce opacity of unchecked options */
-.quiz-option input[type=radio]:not(:checked) + label img {
+.unselected + label img {
   opacity: 0.5;
+}
+
+.unselected + label .boxcolor {
+  background-color: rgba(177, 193, 196, 0.5);
+}
+
+.unselected + label .boxcolor h3 {
+  color: gray;
 }
 
 /* Add shadow & make image larger when selected */
