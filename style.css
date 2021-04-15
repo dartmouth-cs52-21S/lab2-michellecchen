@@ -1,0 +1,542 @@
+/* ------- */
+/* GENERAL STYLING */
+/* ------- */
+
+/* Added scroll-behavior to smoothen autoscroll feature. */
+* {
+  font-family: 'MedievalSharp', cursive;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  background-color: #f5eeeb;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+p {
+  font-size: 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ------- */
+/* HEADER STYLING:
+  BIG HEADER @ TOP (WITH SHIMMERING TEXT),
+  SUBHEADERS PER QUESTION */
+/* ------- */
+
+.header {
+  text-align: center;
+  padding: 50px 0 90px;
+  height: 200px;
+  background-image: url("https://media.dndbeyond.com/compendium-images/moot/ds6d2NLXmv1wnY8q/00-02.b.png");
+  margin: 15px 0 15px;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Large 'h1' part of header text shimmers. */
+/* Implemented this on a whim before realizing that it could contribute to the extra
+CSS flair component that I ended up choosing... oh well. /*
+/* Referenced: https://codepen.io/redouglas/pen/gobsm */
+
+.header h1 {
+  text-shadow: white 0px 0px 30px;
+  font-size: 60px;
+  color: rgba(0,0,0,0.5);
+  font-style: italic;
+  
+  background: gradient(linear, left top, right top, from(#000), to(#000), color-stop(0.5, #E6BE8A));
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(#000), color-stop(0.5, #E6BE8A));
+  
+  animation-name: shimmer;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  background-size: 125px 100%;
+  background-clip: text;
+  
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 3.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-background-size: 125px 100%;
+  -webkit-background-clip: text;
+  
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #000;
+}
+
+/* "Shimmers" from left to right of text. */
+@keyframes shimmer {
+  0% { background-position: top left; }
+  100% { background-position: top right; }
+}
+
+@-webkit-keyframes shimmer {
+  0% { background-position: top left; }
+  100% { background-position: top right; }
+}
+
+.header h2 {
+  line-height: 20px;
+  font-size: 40px;
+  text-shadow: white 0px 0px 20px;
+}
+
+.question-header {
+  text-align: center;
+  padding: 50px;
+  height: 120px;
+  background-image: url("https://media.dndbeyond.com/compendium-images/moot/ds6d2NLXmv1wnY8q/02-02.png");
+  margin-bottom: 15px;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Text shadow: Increases readability of text on background */
+.question-header h2 {
+  text-shadow: white 0px 0px 20px;
+}
+
+/* ------- */
+/* GENERAL QUIZ STYLING (flexboxes for everything) */
+/* ------- */
+
+#quiz {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.quiz-question {
+  text-align: center;
+  margin: 0 0 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #999999;
+  width: 800px;
+}
+
+.quiz-option {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ------- */
+/* STYLING OPTIONS PT. 1: CAPTIONED IMAGES */
+/* ------- */
+
+.image-with-caption {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+label {
+  display: flex;
+}
+
+label img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  transition: all .3s ease-in-out;
+  padding: 10px;
+  border-radius: 12%;
+}
+
+label img:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* GIF ONLY: For GIF results (Question 3)*/
+
+.image-with-caption .gif-file {
+  display: none;
+}
+
+.quiz-option input[type=radio]:checked + label .gif-file {
+  display: block;
+}
+
+.quiz-option input[type=radio]:checked + label .preset-file {
+  display: none;
+}
+
+/* ------- */
+/* STYLING OPTIONS PT. 2: TEXT WITHIN COLORED BOX */
+/* ------- */
+
+.boxcolor {
+  background-color: #C4DCE1;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  line-height: 80px;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* "Biggify" effect upon hover */
+.boxcolor:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Intensify shadow upon selection */
+.boxcolor::after {
+  content: ""; /* Necessary for all ::before and ::after */
+  position: absolute;
+  z-index: -1; /* impt */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.boxcolor:hover::after {
+  opacity: 1;
+}
+
+/* Text inside colorful box */
+.boxcolor h3 {
+  padding: 10px;
+  font-size: 25px;
+}
+
+.boxcolor:hover h3 {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensures that the text is evenly spaced in the box */
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* ------- */
+/* STYLING RESULTS BUTTON AT BOTTOM */
+/* ------- */
+
+.button {
+  font-size: 25px;
+  letter-spacing: 2px;
+  display: block;
+  width: 250px;
+  height: 75px;
+  margin: 10px auto;
+  margin-bottom: 25px;
+  border: none;
+  background-color: #F8E4C7;
+  border-radius: 8px;
+/*   transition: all .3s ease-in-out; */
+  transition: transform 0.5s cubic-bezier(0.7, -0.55, 0.27, 1.6), background-position 800ms cubic-bezier(0.7, -0.55, 0.27, 1.6), box-shadow 500ms linear;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #EFCD9A;
+}
+
+/* ------- */
+/* MODAL POPUP STYLING
+  Referenced: https://www.w3schools.com/howto/howto_css_modals.asp */
+/* ------- */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0, 0.2);
+}
+
+.modal_popup {
+  background-color: #fefefe;
+  margin: 1% auto;
+  padding: 20px;
+  border: 1px transparent;
+  width: 80%;
+  border-radius: 12px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  animation-name: float-in;
+  animation-duration: .7s;
+  -webkit-animation-name: float-in;
+  -webkit-animation-duration: .7s;
+}
+
+@keyframes float-in {
+  0% {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+  }
+  50% { /* giving it a bounce effect */
+    transform: translateY(20%);
+    -webkit-transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+  }
+}
+
+.modal_popup h2 {
+  line-height: 0px;
+}
+
+.modal_popup img {
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+#modal_text {
+  display: flex;
+  flex-direction: row;
+}
+
+/* God name */
+#modal_text h1 {
+  font-size: 50px;
+  line-height: 0px;
+}
+
+#modal_text p {
+  margin: 20px 80px 5px;
+  font-size: 20px;
+  line-height: 21.5px;
+  letter-spacing: 1px;
+}
+
+/* God portrait */
+#modal_img img {
+  height: 150px;
+}
+
+.close_modal {
+  color: #aaa;
+  float: right; /* CHECK THIS */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close_modal:hover {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+/* ------- */
+/* STYLING RADIO BUTTONS */
+/* ------- */
+
+input[type=radio] {
+  display: none;
+}
+
+/* Reduce opacity of unchecked options */
+.unselected + label img {
+  opacity: 0.5;
+}
+
+.unselected + label .boxcolor {
+  background-color: rgba(177, 193, 196, 0.5);
+}
+
+.unselected + label .boxcolor h3 {
+  color: gray;
+}
+
+/* Add shadow & make image larger when selected */
+.quiz-option input[type=radio]:checked + label img {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* Bold text underneath selected image & increase letter spacing */
+.quiz-option input[type=radio]:checked + label p {
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* Darken background when selected, add box shadow, make box slightly larger */
+.quiz-option input[type=radio]:checked + label .boxcolor {
+  background-color: #90B5C5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* ------- */
+/* HANDLING RESIZES FOR MOBILE/ETC. */
+/* ------- */
+
+@media only screen and (max-width: 640px) {
+  .boxcolor h3 {
+    font-size: 20px;
+  }
+}
+
+/* Button to disable auto-scroll between questions */
+
+#scroll_div {
+  position: relative;
+}
+
+.scroll-button {
+  position: fixed;
+  display: inline-block;
+  bottom: 20px;
+  right: 30px;
+  width: 60px;
+  height: 34px;
+  opacity: 20%;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.scroll-button:hover {
+  opacity: 100%;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.scroll-button input {
+  display: none;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  -webkit-transition: .3s;
+  border-radius: 34px;
+}
+
+.toggle:before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .3s;
+  -webkit-transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle {
+  background-color: #b89c7b;
+}
+
+input:checked + .toggle:before {
+  transform: translateX(26px);
+  -webkit-transform: translateX(26px);
+}
+
+/* Animated speech bubble */
+/* Referenced: https://codepen.io/KhaledAhmedYounes/pen/xXqYGY */
+
+#bubble {
+  position: fixed;
+  color: white;
+  background-color: #b89c7b;
+  text-align: center;
+  bottom: 80px;
+  right: 15px;
+  transform-origin: 0% 100%;
+  border-radius: 12px;
+  width: 120px;
+  padding: 10px;
+  transform: scale(0);
+  animation-fill-mode: forwards;
+}
+
+/* Adds a tail to the bubble; size determined by borders */
+#bubble::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  bottom: -25px;
+  left: 90px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #b89c7b transparent transparent #b89c7b;
+  transform: rotate(10deg);
+}
+
+/* We give it a bit of inflation at 50%. It 'pops' into view this way. */
+@keyframes bubble-appear {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bubble-disappear {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
