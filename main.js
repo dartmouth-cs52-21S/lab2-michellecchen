@@ -145,3 +145,23 @@ document.querySelectorAll('.radio-option').forEach(item => {
     
   })
 })
+
+// Helpful speech bubble pops up above button
+
+var scroller = $('#scroll_div');
+var speechBubble = $('#bubble');
+
+scroller.hover(function() {
+  
+  speechBubble.css({
+    'animation-name': 'bubble-appear',
+    'animation-duration': '.3s'
+    
+  });}, function() {
+  speechBubble.css({
+    
+    'animation-name': 'bubble-disappear',
+    'animation-duration': '.1s'
+    
+  });}
+);
