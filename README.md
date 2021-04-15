@@ -45,4 +45,4 @@ Question-to-question autoscroll feature (enabled through toggle, peep the popup)
 
 Answers with GIFs that animate upon selection:
 
-![gifdemo](https://gifyu.com/image/rODp)
+![gifdemo](https://s4.gifyu.com/images/ezgif-3-bc1a47d1e089.gif)
