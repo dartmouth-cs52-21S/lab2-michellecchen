@@ -28,6 +28,14 @@ wip
 
 ## Screenshots
 
-Header shimmer effect (reference used):
+Header shimmer effect:
 
 ![gifshimmer](https://i.imgur.com/WQRrhnp.gif)
+
+Question-to-question autoscroll feature (enabled through toggle, peep the popup):
+
+![scroll](https://i.imgur.com/kpDsPwS.gif)
+
+Answers with GIFs that animate upon selection:
+
+![gifdemo](https://gifyu.com/image/rODp)
