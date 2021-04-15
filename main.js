@@ -114,3 +114,34 @@ $(".radio-option").change(function() {
     $(this).removeClass("unselected");
   }
 });
+
+// Auto scroll
+// Default: Disabled. Use toggle button at bottom-right
+// of screen to enable.
+var q1 = document.getElementById("question1");
+var q2 = document.getElementById("question2");
+var q3 = document.getElementById("question3");
+var q4 = document.getElementById("question4");
+var q5 = document.getElementById("question5");
+
+var toggleBtn = document.getElementById('toggle_scroll');
+
+document.querySelectorAll('.radio-option').forEach(item => {
+  var radioBtn = item;
+  var btnName = item.getAttribute("name");
+  
+  item.addEventListener('click', event => {
+    
+    var btnNum = btnName[1];
+    
+    if (toggleBtn.checked) {
+      
+      if (btnNum==1) q2.scrollIntoView();
+      else if (btnNum==2) q3.scrollIntoView();
+      else if (btnNum==3) q4.scrollIntoView();
+      else if (btnNum==4) q5.scrollIntoView();
+      
+    }
+    
+  })
+})

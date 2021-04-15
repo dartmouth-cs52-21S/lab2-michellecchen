@@ -2,15 +2,17 @@
 /* GENERAL STYLING */
 /* ------- */
 
+/* Added scroll-behavior to smoothen autoscroll feature. */
 * {
   font-family: 'MedievalSharp', cursive;
+  scroll-behavior: smooth;
 }
 
 body {
   padding: 0;
   margin: 0;
   align-items: center;
-  background-color: #F7F4F4;
+  background-color: #f5eeeb;
 }
 
 h1 {
@@ -170,6 +172,20 @@ label img:hover {
   cursor: pointer;
 }
 
+/* GIF ONLY: For GIF results (Question 3)*/
+
+.image-with-caption .gif-file {
+  display: none;
+}
+
+.quiz-option input[type=radio]:checked + label .gif-file {
+  display: block;
+}
+
+.quiz-option input[type=radio]:checked + label .preset-file {
+  display: none;
+}
+
 /* ------- */
 /* STYLING OPTIONS PT. 2: TEXT WITHIN COLORED BOX */
 /* ------- */
@@ -239,18 +255,23 @@ span {
 /* ------- */
 
 .button {
-  font-size: 20px;
+  font-size: 25px;
+  letter-spacing: 2px;
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 75px;
   margin: 10px auto;
+  margin-bottom: 25px;
   border: none;
   background-color: #F8E4C7;
   border-radius: 8px;
-  transition: all .3s ease-in-out;
+/*   transition: all .3s ease-in-out; */
+  transition: transform 0.5s cubic-bezier(0.7, -0.55, 0.27, 1.6), background-position 800ms cubic-bezier(0.7, -0.55, 0.27, 1.6), box-shadow 500ms linear;
+  text-transform: uppercase;
 }
 
 .button:hover {
+  transform: scale(1.1);
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   -webkit-transition: all .3s ease-in-out;
@@ -272,15 +293,16 @@ span {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
+/*   background-color: rgb(0,0,0); */
 }
 
 .modal_popup {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px transparent;
   width: 80%;
+  border-radius: 12px;
   
   display: flex;
   flex-direction: column;
@@ -307,6 +329,13 @@ span {
 #modal_text h1 {
   font-size: 50px;
   line-height: 0px;
+}
+
+#modal_text p {
+  margin: 20px 80px 5px;
+  font-size: 20px;
+  line-height: 21.5px;
+  letter-spacing: 1px;
 }
 
 /* God portrait */
@@ -373,4 +402,73 @@ input[type=radio] {
   -webkit-transform: scale(1.05);
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* ------- */
+/* HANDLING RESIZES FOR MOBILE/ETC. */
+/* ------- */
+
+@media only screen and (max-width: 640px) {
+  .boxcolor h3 {
+    font-size: 20px;
+  }
+}
+
+/* Button to disable auto-scroll between questions */
+
+.scroll-button {
+  position: fixed;
+  display: inline-block;
+  bottom: 20px;
+  right: 30px;
+  width: 60px;
+  height: 34px;
+  opacity: 20%;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.scroll-button:hover {
+  opacity: 100%;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.scroll-button input {
+  display: none;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  -webkit-transition: .3s;
+  border-radius: 34px;
+}
+
+.toggle:before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .3s;
+  -webkit-transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle {
+  background-color: #ffe194;
+}
+
+input:checked + .toggle:before {
+  transform: translateX(26px);
+  -webkit-transform: translateX(26px);
 }
