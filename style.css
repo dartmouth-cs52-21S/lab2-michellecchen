@@ -310,9 +310,9 @@ span {
   align-items: center;
   
   animation-name: float-in;
-  animation-duration: .5s;
+  animation-duration: .7s;
   -webkit-animation-name: float-in;
-  -webkit-animation-duration: .5s;
+  -webkit-animation-duration: .7s;
 }
 
 @keyframes float-in {
