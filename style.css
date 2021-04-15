@@ -320,6 +320,10 @@ span {
     transform: translateY(-100%);
     -webkit-transform: translateY(-100%);
   }
+  50% { /* giving it a bounce effect */
+    transform: translateY(20%);
+    -webkit-transform: translateY(20%);
+  }
   100% {
     transform: translateY(0%);
     -webkit-transform: translateY(0%);
