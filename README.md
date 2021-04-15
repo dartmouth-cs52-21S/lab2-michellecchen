@@ -1,10 +1,12 @@
-# Buzzfeed-esque quiz: 🌟 "WHICH GOD OF THEROS ARE YOU?" 🌟
+# Quiz: "WHICH GOD OF THEROS ARE YOU?"
 
 I certainly don't play *Magic: The Gathering*, but I know a couple people who do. To entertain them, I read through the guidebook and decided to make a quiz featuring the gods from the fictional, Greek-inspired universe, 'Theros.'
 
 Some of them, at least.
 
 To take the quiz, click [here](https://dartmouth-cs52-21s.github.io/lab2-michellecchen/).
+
+**I chose the CSS focus.**
 
 ## What Worked Well
 
@@ -24,7 +26,12 @@ Another thing was that the text in the subheaders above each question was, at fi
 
 ## Extra Credit
 
-wip
+Some of this could be considered as "styling," so I'll just compile a list of cool features that weren't specified in the original assignment (so, not including things such as the animated modal popup, which was required for the CSS focus). Up to you what counts as E.C. :)
+
+- **Shimmering header:** Accomplished through animations.
+- **Automatic scrolling between questions**: Mimics Buzzfeed. After answering a question, your browser window automatically scrolls down to the start of the next question.
+- **Toggle autoscroll**: By toggling the button fixed to the bottom-left of the screen, you can enable or disable the feature mentioned above. Its default state is set to disabled.
+- **Animated speech bubble**: Pops up whenever the button mentioned above is hovered by the cursor
 
 ## Screenshots
 
